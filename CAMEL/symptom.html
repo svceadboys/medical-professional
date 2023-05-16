@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+		function generateRandomID() {
+		  // Generate a random number
+		  var randomNumber = Math.floor(Math.random() * 10000);
+	
+		  // Create a unique ID using the current timestamp and the random number
+		  var uniqueID = Date.now() + '-' + randomNumber;
+	
+		  // Display the unique ID on the page
+		  document.getElementById("uniqueID").textContent = uniqueID;
+		}
+	  </script>
+  <title>Patient Symptom Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="time"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    
+  
+  <h1>Patient Symptom Tracker</h1>
+  <button onclick="generateRandomID()">Generate ID</button>
+    <p>Unique ID: <span id="uniqueID"></span></p>       
+  <form>
+    <label for="symptoms">Symptoms:</label>
+    <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+
+    <label for="inTime">In Time:</label>
+    <input type="time" id="inTime" name="inTime" required>
+
+    <label for="outTime">Out Time:</label>
+    <input type="time" id="outTime" name="outTime" required>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

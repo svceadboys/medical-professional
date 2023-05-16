@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Patient History</title>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, #8bd3dd, #3d6cb9);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input[type="date"],
+        textarea {
+            padding: 8px;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Patient History</h1>
+
+        <h2>Old History</h2>
+        <ul id="old-history">
+            <li>2019-01-15: Fever and cough</li>
+            <li>2019-02-05: Headache and dizziness</li>
+            <li>2019-03-20: Abdominal pain</li>
+        </ul>
+
+        <h2>Add New History</h2>
+        <form onsubmit="addNewHistory(event)">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br>
+
+            <label for="symptoms">Symptoms:</label>
+            <textarea id="symptoms" name="symptoms" required></textarea><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <h2>Recent History</h2>
+        <ul id="all-history"></ul>
+    </div>
+
+    <script>
+        function addNewHistory(event) {
+            event.preventDefault();
+
+            // Get the form values
+            var date = document.getElementById("date").value;
+            var symptoms = document.getElementById("symptoms").value;
+
+            // Create a new list item
+            var newHistoryEntry = document.createElement("li");
+            newHistoryEntry.textContent = date + ": " + symptoms;
+
+            // Append the new entry to the old history list
+            var oldHistoryList = document.getElementById("old-history");
+            oldHistoryList.appendChild(newHistoryEntry);
+
+            // Append the new entry to the all history list
+            var allHistoryList = document.getElementById("all-history");
+            allHistoryList.appendChild(newHistoryEntry);
+
+            // Clear the form values
+            document.getElementById("date").value = "";
+            document.getElementById("symptoms").value = "";
+        }
+    </script>
+</body>
+
+</html
